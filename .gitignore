@@ -2,4 +2,4 @@
 *.swp
 **/migrations/*
 *.sqlite3
-
+*.jpg
