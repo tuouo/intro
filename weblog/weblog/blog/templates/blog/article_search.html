@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+
+{% block main %}
+    {% if error_msg %}
+        <p>{{ error_msg }}</p>
+    {% endif %}
+    {% for article in article_list %}
+        <article class="post post-{{ article.pk }}">
+            <header class="entry-header">
+                <h1 class="entry-title">
+                    <a href="{{ article.get_detail_url }}">{{ article.title }}</a>
+                </h1>
+                <div class="entry-meta">
+                    <span class="post-author"><a href="{% url 'blog:article_author' article.author.pk %}">{{ article.author }}</a></span>
+                    <span class="post-category"><a href="{% url 'blog:article_category' article.category.pk %}">{{ article.category.name }}</a></span>
+                    <span class="post-date"><a href="{% url 'blog:article_archives' article.create_at.year article.create_at.month %}">
+                        <time class="entry-date" datetime="{{ article.create_at }}">{{ article.create_at }}</time>
+                    </a></span>
+                    <span class="comments-link"><a href="{{ article.get_detail_url }}#comment-area">共{{ article.comment_set.count }}条评论</a></span>
+                    <span class="views-count"><a href="{{ article.get_detail_url }}">{{ article.browse }}次阅读</a></span>
+                </div>
+            </header>
+            <div class="entry-content clearfix">
+                <p>{{ article.excerpt }} ...</p>
+                <div class="read-more cl-effect-14">
+                    <a href="{{ article.get_detail_url }}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
+                </div>
+            </div>
+        </article>
+    {% empty %}
+        <div class="no-post">暂时还没有发布的文章。</div>
+    {% endfor %}
+{% endblock main %}
