@@ -7,6 +7,9 @@ name = "pypi"
 django = "*"
 markdown = "*"
 pygments = "*"
+django-haystack = "*"
+whoosh = "*"
+jieba = "*"
 
 [dev-packages]
 

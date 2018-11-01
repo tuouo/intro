@@ -13,6 +13,5 @@ urlpatterns = [
     path('tag/<int:pk>/', views.ArticleTagView.as_view(), name='article_tag'),
     re_path('author/(?P<pk>\d+)/',
         views.ArticleAuthorView.as_view(), name='article_author'),
-    path('search/', views.search, name='search'),
 ]
 

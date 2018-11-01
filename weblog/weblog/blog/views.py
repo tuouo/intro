@@ -110,6 +110,7 @@ class ArticleDetailView(generic.DetailView):
         return context
 
 def search(request):
+    # for self search not haystack
     template_name = 'blog/article_search.html'
     q = request.GET.get('q')
     if not q:

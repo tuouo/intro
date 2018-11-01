@@ -20,7 +20,7 @@
                     </div>
                 </header>
                 <div class="entry-content clearfix">
-                    <p>{% highlight result.object.body with query %}</p>
+                    <p>{{ article.excerpt }} ...</p>
                     <div class="read-more cl-effect-14">
                         <a href="{{ result.object.get_detail_url }}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
                     </div>
@@ -29,16 +29,6 @@
         {% empty %}
             <div class="no-post">没有匹配的结果！</div>
         {% endfor %}
-        {% if page.has_previous or page.has_next %}
-            <div>
-                {% if page.has_previous %}
-                    <a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous
-                {% if page.has_previous %}</a>{% endif %}
-                |
-                {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next
-                &raquo;{% if page.has_next %}</a>{% endif %}
-            </div>
-        {% endif %}
     {% else %}
         请输入搜索关键字，例如python
     {% endif %}
